@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'main/style.css' %}?v=5">
+    <title>Sign Up | LakshyaX</title>
+</head>
+<body class="signup-body">
+    {% include 'navigation.html' %}
+
+    <section id="login-section">
+        <div class="register-container">
+            <h2>Create an Account</h2>
+
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li class="{{ message.tags }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <form id="Login-form" method="POST" action="#">
+                {% csrf_token %}
+                {{ signup_form.as_p }}  <!-- Ensure signup form is rendered properly -->
+                <button type="submit">Sign Up</button>
+                <p>Already have an account? <a href="{% url 'login' %}" class="already-have-account">Sign In here</a></p>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

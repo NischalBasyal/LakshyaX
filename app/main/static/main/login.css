@@ -1,0 +1,73 @@
+/* CSS For Signin page */
+:root {
+    --background-primary: #FBFFCC;
+    --background-secondary: #111111;
+    --color-primary: #111111;
+    --color-secondary: #ffffff;
+
+    --navigation-background-color: #ffffff;
+
+    --signin-background-color: #DBFFCB;
+    --signup-background-color: #CBE8FF;
+
+    --completed-button-background-color: #1aff00;
+}
+body {
+    display: flex;
+    justify-content: center;
+    font-family: "Playfair Display";
+    align-items: center;
+    height: 100vh;
+    background: var(--signin-background-color);
+    font-family: "Playfair Display";
+}
+
+.login-container {
+    display: block;
+    background: var(--navigation-background-color);
+    font-family: "Playfair Display";
+    padding: 5%;
+    border-radius: 5%;
+    text-align: center;
+    width: 400px;
+} 
+
+h2 {
+    color: var(--color-primary);
+    margin-bottom: 1vh;
+}
+
+input {
+    display: block;
+    width: 90%;
+    padding: 1vh;
+    margin: 1.5vh;
+    border-radius: 20px;
+    text-align: center;
+}
+
+button {
+    background: var(--color-primary);
+    color: white;
+    padding: 1.5vh;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 1vh;
+}
+
+.already-have-account {
+    display: block;
+    margin-top: 1vh;
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+.already-have-account:hover {
+    text-decoration: underline;
+}
+
+
+
+

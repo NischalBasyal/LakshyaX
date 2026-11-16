@@ -1,0 +1,58 @@
+{% extends 'index.html' %}
+
+{% block content %}
+{% load static %}
+
+<main>
+    <section id="hero-half-top">
+        <div class="hero-half-top-content-centered">
+            <h2>My Goals</h2>
+        </div>
+    </section>
+
+    <section id="goal-display-section">
+        <!-- Check if the user has any goals -->
+        {% if my_goals %}
+            <!-- Loop through the goals to display them -->
+            {% for goal in my_goals %}
+                <div class="goal-display-card-div">
+                    <h2 class="goal-display-card-name">{{ goal.goal_name }}</h2>
+                    <img src="{% static goal.goal_category_image %}" alt="{{ goal.goal_name }} Category Image">
+                    <h3>{{ goal.goal_points }} Points</h3>
+                    <p>Deadline: {{ goal.goal_time }}</p>
+                    <p>{{ goal.goal_description }}</p>
+
+                    <form method="GET" action="{% url 'update' goal_no=goal.id %}">
+                        <input type="submit" value="Update Goal">
+                    </form>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No goals found. Start by adding a goal!</p>
+        {% endif %}
+    </section>
+
+</main>
+
+<!-- Script to handle alerts -->
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/alertify.min.js"></script>
+<script>
+    // Auto-hide Bootstrap alerts after 4 seconds
+    setTimeout(function() {
+        let alerts = document.querySelectorAll(".alert");
+        alerts.forEach(alert => {
+            let bsAlert = new bootstrap.Alert(alert);
+            bsAlert.close();
+        });
+    }, 4000);
+
+    // Alertify messages for notifications
+    {% if messages %}
+        {% for message in messages %}
+            alertify.set('notifier', 'position', 'bottom-right');
+            alertify.success('{{ message|force_escape|escapejs }}');
+        {% endfor %}
+    {% endif %}
+</script>
+
+{% endblock %}

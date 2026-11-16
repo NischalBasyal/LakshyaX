@@ -1,0 +1,43 @@
+<!-- This is the code for completed goal page -->
+{% extends 'index.html' %}
+{% block content %}
+<main>
+    <section id="completed-goal-section" aria-labelledby="completed-goals-heading">
+    <h2 id="completed-goals-heading">Completed Goals</h2>
+    {% for goal in my_goals %}
+    <article class="completed-goal-card-div">
+        <div class="completed-goal-summary">
+            <div>
+                <h3>{{ goal.goal_name }}</h3>
+                <p>{{ goal.goal_description }}</p>
+            </div>
+            {% if goal.goal_time %}
+            <p class="completed-goal-date">
+                <span class="completed-goal-date-label">Goal deadline</span>
+                <strong data-goal-date>{{ goal.goal_time }}</strong>
+            </p>
+            {% endif %}
+        </div>
+
+        <div class="completed-goal-reflection">
+            <h4>Goal Reflection</h4>
+            <p class="reflection-preview">{{ goal.goal_reflection|truncatewords:9|truncatechars:100 }}</p>
+            <button type="button" class="reflection-open" data-reflection-dialog="reflection-{{ goal.pk }}" aria-haspopup="dialog">
+                Read full reflection
+            </button>
+        </div>
+
+        <dialog class="reflection-dialog" id="reflection-{{ goal.pk }}" aria-labelledby="reflection-title-{{ goal.pk }}">
+            <h2 id="reflection-title-{{ goal.pk }}">{{ goal.goal_name }}</h2>
+            <p>{{ goal.goal_reflection }}</p>
+            <form method="dialog">
+                <button type="submit" autofocus>Close</button>
+            </form>
+        </dialog>
+    </article>
+    {% empty %}
+    <p>No completed goals yet.</p>
+    {% endfor %}
+    </section>
+</main>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<main>
+    {% load static %}
+    <section id="points-sections">
+        {% for goal in my_goals %}
+        {% if goal.id == my_goal_no %}
+        <div class="points-section-card">
+            <h2>Update the Goal</h2>
+            <h3 class="goal-display-card-name">{{ goal.goal_name }}</h3>
+           
+ 
+            <!-- Form to update goal -->
+            <form class="goal-form" method="POST">
+                {% csrf_token %}
+                {{ update_goal_form.as_div }}
+
+                <div class="goal-form-actions">
+                    <input type="submit" value="Update Goal">
+                </div>
+            </form>
+            <form action="{% url 'markcompleted' goal_no=goal.id %}" method="GET">
+                <input type="submit" value="Mark completed">
+            </form>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </section>
+</main>
+{% endblock %}

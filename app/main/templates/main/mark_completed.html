@@ -1,0 +1,25 @@
+<!-- the html for goal mark complete submission
+ page -->
+{% extends 'index.html' %}
+{% block content %}
+<main>
+    <section id="points-sections">
+        {% for goal in my_goals %}
+        {% if goal.id == my_goal_no %}
+        <div class="points-section-card">
+            <h2>Are you sure</h2>
+            <p>You want to mark this goal as completed?</p>
+            <h1 class="goal-display-card-name">Goal:{{ goal.goal_name }}</h1>
+            <form method="POST">
+            {% csrf_token %}
+            {{ my_goal_reflection_form }}
+            <input type="submit" value="submit">
+            </form>
+            
+        </div>
+
+        {% endif %}
+        {% endfor %}
+    </section>
+</main>
+{% endblock %}

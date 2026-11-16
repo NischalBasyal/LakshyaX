@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LakshyaX</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/alertify.min.css"/>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/themes/default.min.css"/>
+    <link rel="stylesheet" href="{% static 'main/style.css' %}?v=9">
+
+    <!-- JS Libraries (Alertify.js) -->
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/alertify.min.js"></script>
+
+    <!-- Custom JS -->
+    <script defer src="{% static 'main/index.js' %}?v=4"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    {% include 'navigation.html' %}
+    
+    <!-- Main Content -->
+    {% block content %}
+    {% endblock %}
+
+</body>
+</html>

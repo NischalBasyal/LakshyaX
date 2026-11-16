@@ -1,0 +1,31 @@
+{% load static %}
+<!-- The signin page form page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'main/style.css' %}?v=5">
+    <title>Sign In | LakshyaX</title>
+</head>
+<body class="signin-body">
+    <!-- To diplay the navigation bar -->
+    {% include 'navigation.html' %}        
+    
+    <main>
+        <section id="login-section">
+            <div class="login-card">
+                <h2 class="login-title">Sign In</h2>
+                <form id="Login-form" method="POST">
+                    {% csrf_token %}
+                    {{signin_form}}
+                    <input type="submit" value="Signin">
+                    <p>Don't have account? <a href="{% url 'signup' %}">SignUp here</a></p>
+                </form>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
+
+

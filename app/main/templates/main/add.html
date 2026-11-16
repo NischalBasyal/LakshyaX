@@ -1,0 +1,44 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<main>
+    <div id="Add-goal-card">
+        <h2>Add New Goal</h2>
+        <form id="Add-goal-form" class="goal-form" method="POST">
+            {% csrf_token %}
+            {{ add_goal_form.as_div }}
+            <div class="goal-form-actions">
+                <input type="submit" value="Set a Goal!">
+            </div>
+        </form>
+    </div>
+
+    <!-- Custom JavaScript for Alertify -->
+    <script>
+        // Auto-hide alerts after 4 seconds
+        setTimeout(function() {
+            let alerts = document.querySelectorAll(".alert");
+            alerts.forEach(alert => {
+                let bsAlert = new bootstrap.Alert(alert);
+                bsAlert.close();
+            });
+        }, 4000);
+
+        // Alertify messages for notifications
+        {% for message in messages %}
+            alertify.set('notifier', 'position', 'bottom-right');
+            alertify.success('{{ message|force_escape|escapejs }}');
+        {% endfor %}
+    </script>
+</main>
+{% endblock %}
+
+{% block extra_css %}
+    <!-- Custom CSS for Add Goal page if needed -->
+    {% comment %} <link rel="stylesheet" href="{% static 'main/add.min.css' %}"> {% endcomment %}
+{% endblock %}
+
+{% block extra_js %}
+    <!-- Custom JS for Add Goal page if needed -->
+    {% comment %} <script src="{% static 'main/add.min.js' %}"></script> {% endcomment %}
+{% endblock %}

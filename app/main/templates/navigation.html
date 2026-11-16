@@ -1,0 +1,16 @@
+<header>
+    <nav id="navigation">
+        <h1 id="product-name">LakshyaX</h1>
+        <ul class="nav-ul">
+            {% if user.is_authenticated %}
+            <li class="nav-li"><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+            <li class="nav-li"><a href="{% url 'add' %}" class="nav-link">Add Goals</a></li>
+            <li class="nav-li"><a href="{% url 'goals' %}" class="nav-link">View Goals</a></li>
+            <li class="nav-li"><a href="{% url 'completed' %}" class="nav-link">Completed Goal</a></li>
+            <li class="nav-li"><a href="{% url 'logout' %}" class="nav-link nav-link-logout">Logout</a></li>
+            {% else %}
+            <li class="nav-li"><a href="{% url 'login' %}" class="nav-link">Login</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>

@@ -1,0 +1,23 @@
+<!-- the html for home page
+ where points is displayed -->
+{% extends 'index.html' %}
+{% block content %}
+<main id="hero-main">
+    <section id="hero-half-top">
+        <div class="hero-half-top-content-centered">
+            <h2>Welcome back {{user}}!</h2>
+            <p>You are on the road to success<br>
+            Rationalise your day with us!</p>
+        </div>
+    </section>
+    <section id="points-sections">
+        <div class="points-section-card">
+            <p>You are doing amazing! keep up!</p>
+            <h3>You have:</h3>
+            <!-- to show users points -->
+            <h2>{{my_point}}</h2>
+            <h3>Points</h3>
+        </div>
+    </section>
+</main>
+{% endblock %}
